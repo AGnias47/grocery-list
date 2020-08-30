@@ -1,0 +1,11 @@
+{
+  "name": "grocery-list",
+  "version": "0.0.1",
+  "description": "Generates a grocery list from user-input meals",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Andy Gnias",
+  "license": "ISC"
+}
