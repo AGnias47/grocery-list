@@ -4,6 +4,7 @@
   "description": "Generates a grocery list from user-input meals",
   "main": "index.js",
   "scripts": {
+    "doc": "jsdoc -R ReadMe.md groceries.js -d docs/",
     "test": "mocha",
     "go": "node index.js"
   },
@@ -11,5 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.20.0"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.6.5"
   }
 }
