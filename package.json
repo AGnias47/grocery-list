@@ -4,8 +4,12 @@
   "description": "Generates a grocery list from user-input meals",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "go": "node index.js"
   },
   "author": "Andy Gnias",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.20.0"
+  }
 }
