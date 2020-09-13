@@ -4,8 +4,8 @@
   "description": "Generates a grocery list from user-input meals",
   "main": "index.js",
   "scripts": {
-    "build": "babel groceries.js -o groceries.js && babel test/ -d test",
-    "doc": "jsdoc -R ReadMe.md groceries.js -d docs/",
+    "build": "babel index.js -o index.js && babel groceries.js -o groceries.js && babel meal.js -o meal.js && babel test/ -d test",
+    "doc": "jsdoc -R ReadMe.md . -d docs/",
     "test": "mocha",
     "go": "node index.js"
   },

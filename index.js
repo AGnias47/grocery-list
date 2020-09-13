@@ -1,8 +1,10 @@
 const groceries = require("./groceries.js");
 
+'use strict';
+
 async function main() {
-  let meals = await groceries.getMeals(["lasagna"]);
-  console.log(meals[0]);
+  let meal = await groceries.getMealData("lasagna");
+  console.log(meal);
   console.log(await groceries.getRandomMeal());
 }
 
