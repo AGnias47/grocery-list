@@ -1,10 +1,7 @@
-/**
- * Meal class. Wraps data more cleanly for meals obtained from TheRecipeDB API.
- * @module meal
- */
 'use strict';
+/** Meal class. Wraps data more cleanly for meals obtained from TheRecipeDB API. */
 
-module.exports = class Meal {
+class Meal {
   /**
    * Wraps data more cleanly for meals obtained from TheRecipeDB API
    *
@@ -45,4 +42,6 @@ module.exports = class Meal {
     return ingredients;
   }
 
-};
+}
+
+module.exports = Meal;
