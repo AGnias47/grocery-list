@@ -3,45 +3,39 @@
  *
  * @module groceries
  */
+'use strict';
+
 const axios = require("axios");
 
 const config = require("./config.json");
 
+const Meal = require("./meal.js");
+
 module.exports = {
   /**
-   * Gets meals data from a list of meals
+   * Gets meal data for a specific meal
    *
-   * @param meals {array}   List of strings
-   * @returns {array}       List of meal objects
+   * @param meal {string}   String of meal
+   * @returns {Meal}        Data pertaining to meal as a Meal object
    *
    * @example
-   * getMeals(["lasagna", "pork tacos", "tiramisu"]);
+   * getMealData("pork tacos");
    */
-  getMeals: async function (meals) {
-    let mealData = [];
-
-    for (let meal of meals) {
-      try {
-        const response = await axios.get(config.api_base_url + "search.php?s=" + meal);
-        mealData.push(response.data);
-      } catch (error) {
-        throw Error(error);
-      }
-    }
-
-    return mealData;
+  getMealData: async function (meal) {
+    const response = await axios.get(config.api_base_url + "search.php?s=" + meal);
+    return new Meal(response.data.meals[0]);
   },
 
   /**
    * Gets data for a random meal
    *
-   * @returns {Object} Meal data
+   * @returns {Meal}        Data pertaining to meal as a Meal object
    *
    * @example
    * getRandomMeal();
    */
   getRandomMeal: async function () {
     const response = await axios.get(config.api_base_url + "random.php");
-    return response.data;
+    return new Meal(response.data.meals[0]);
   }
 };

@@ -1,3 +1,5 @@
+'use strict';
+
 const groceries = require("../groceries.js");
 
 const {
@@ -8,8 +10,8 @@ const mocha = require("mocha");
 
 describe("Groceries", async function () {
   it("Console print test", async function () {
-    let meals = await groceries.getMeals(["lasagna"]);
-    console.log(meals[0]);
+    let meal = await groceries.getMealData("lasagna");
+    console.log(meal);
     console.log(await groceries.getRandomMeal());
   });
 });
