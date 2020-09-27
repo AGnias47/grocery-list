@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "babel index.js -o index.js && babel groceries.js -o groceries.js && babel meal.js -o meal.js && babel test/ -d test",
-    "format": "js-beautify -r *.js **/*.js",
+    "format": "js-beautify -s 2 -r *.js **/*.js",
     "doc": "jsdoc -R ReadMe.md . -d docs/",
     "test": "mocha",
     "go": "node index.js"
