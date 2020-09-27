@@ -8,10 +8,11 @@
     "format": "js-beautify -s 2 -r *.js **/*.js",
     "doc": "jsdoc -R ReadMe.md . -d docs/",
     "test": "mocha",
-    "go": "node index.js"
+    "go": "node index.js",
+    "softclean": "git clean -dxf -e node_modules/ -e .idea/"
   },
   "author": "Andy Gnias",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.20.0"
   },
@@ -20,7 +21,7 @@
     "@babel/core": "^7.11.6",
     "chai": "^4.2.0",
     "js-beautify": "^1.13.0",
-    "jsdoc": "^3.6.5",
+    "jsdoc": "^3.6.6",
     "mocha": "^8.1.3"
   }
 }
