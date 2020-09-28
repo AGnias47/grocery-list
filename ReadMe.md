@@ -7,8 +7,14 @@ development phase.
 
 [TheRecipeDB](https://www.themealdb.com/api.php) will be used.
 
-## Intended Features
+## Intended Top-Level Features
 
 * Provide a list of meals, get a grocery list
 * Provide some basic info, get random meals, recipes, and a grocery list
 
+## Implementation Improvements
+
+* Return ingredient quantities
+* Return ingredients as grouped by type, ex. fruits grouped with fruits
+* Create a frontend
+* Handle cases where a meal is not found
