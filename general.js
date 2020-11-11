@@ -1,3 +1,9 @@
+/**
+ * General module for grocery-list project
+ *
+ * @module general
+ */
+
 const fs = require("fs");
 
 'use strict';
