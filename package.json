@@ -4,12 +4,12 @@
   "description": "Generates a grocery list from user-input meals",
   "main": "index.js",
   "scripts": {
-    "build": "babel index.js -o index.js && babel groceries.js -o groceries.js && babel meal.js -o meal.js && babel test/ -d test",
-    "format": "js-beautify -s 2 -r *.js **/*.js",
-    "doc": "jsdoc -R ReadMe.md . -d docs/",
-    "test": "mocha",
-    "go": "node index.js",
-    "softclean": "git clean -dxf -e node_modules/ -e .idea/"
+    "format": "js-beautify -s 2 -r *.js test/*.js",
+    "doc": "jsdoc -R ReadMe.md . -d docs/js-doc-modules",
+    "test": "nyc --reporter=lcov --report-dir=docs/nyc-lcov-coverage --reporter=text mocha",
+    "start": "node index.js",
+    "softclean": "git clean -dxf -e node_modules/ -e .idea/",
+    "e2e": "npm install && npm run format && npm run doc && npm run test && npm start && npm run softclean"
   },
   "author": "Andy Gnias",
   "license": "MIT",
@@ -24,6 +24,7 @@
     "chai": "^4.2.0",
     "js-beautify": "^1.13.0",
     "jsdoc": "^3.6.6",
-    "mocha": "^8.1.3"
+    "mocha": "^8.1.3",
+    "nyc": "^15.1.0"
   }
 }

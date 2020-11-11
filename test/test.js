@@ -1,6 +1,7 @@
 'use strict';
 
 const groceries = require("../groceries.js");
+const general = require("../general.js");
 
 const {
   expect
@@ -25,3 +26,12 @@ describe("Groceries", async function() {
   });
 });
 
+describe("General", async function() {
+  it("Test reading file into array", async function() {
+    const groceries = general.readFileIntoArray("test/artifacts/meals.txt")
+    expect(groceries).to.include("pork");
+    expect(groceries).to.include("pizza");
+    expect(groceries).to.include("perogies");
+    expect(groceries).to.not.include("A meal not in the list");
+  });
+});

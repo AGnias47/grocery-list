@@ -5,12 +5,19 @@ development phase.
 
 ## API
 
-[TheRecipeDB](https://www.themealdb.com/api.php) will be used.
+[TheMealDB](https://www.themealdb.com/api.php) will be used.
 
-## Intended Top-Level Features
+## Top-Level Functionality
 
-* Provide a list of meals, get a grocery list
-* Provide some basic info, get random meals, recipes, and a grocery list
+* Input: List of meals separated by lines in a file named `meals.txt`
+* Output: List of ingredients needed for all meals listed in `meals.txt`
+
+### Script execution
+
+```bash
+npm install
+node index.js
+```
 
 ## Implementation Improvements
 
@@ -19,3 +26,8 @@ development phase.
 * Create a frontend
 * Handle cases where a meal is not found
 * Convert ingredients to ingredient-quantity mapping
+
+### Functionality
+
+* Provide some basic info, get random meals, recipes, and a grocery list
+
