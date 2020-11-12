@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "format": "js-beautify -s 2 -r *.js test/*.js",
-    "doc": "jsdoc -R ReadMe.md . -d docs/js-doc-modules",
+    "doc": "jsdoc -R ReadMe.md . -d docs",
     "test": "nyc --reporter=lcov --report-dir=docs/nyc-lcov-coverage --reporter=text mocha",
     "start": "node index.js",
     "softclean": "git clean -dxf -e node_modules/ -e .idea/",
