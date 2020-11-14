@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: groceries.js</title>
+    <title>JSDoc: Source: main.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: groceries.js</h1>
+    <h1 class="page-title">Source: main.js</h1>
 
     
 
@@ -27,48 +27,33 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Module for working with TheMealDB
+ * Main runner function for grocery list project
  *
- * @module groceries
+ * @module main
  */
+
+const groceries = require("./groceries.js");
+const general = require("./general.js");
 
 'use strict';
 
-const axios = require("axios");
-const FuzzyMatching = require("fuzzy-matching")
-
-const config = require("./config.json");
-
-const Meal = require("./meal.js");
-
 module.exports = {
   /**
-   * Gets meal data for a specific meal
+   * Takes a file with a list of meals as an input and returns ingredients with quantities as an Object
    *
-   * @param meal {string}   String of meal
-   * @returns {Meal}        Data pertaining to meal as a Meal object
-   *
-   * @example
-   * getMealData("pork tacos");
+   * @param mealsFileName {string} Filepath to list of meals. Meals are expected to be separated by a new line (\n).
+   * @returns {Promise&lt;{Object}>} Object where Key: Ingredient, Value: Quantity
    */
-  getMealData: async function(meal) {
-    const response = await axios.get(config.api_base_url + "search.php?s=" + meal);
-    return new Meal(response.data.meals[0]);
-  },
-
-  /**
-   * Gets data for a random meal
-   *
-   * @returns {Meal}        Data pertaining to meal as a Meal object
-   *
-   * @example
-   * getRandomMeal();
-   */
-  getRandomMeal: async function() {
-    const response = await axios.get(config.api_base_url + "random.php");
-    return new Meal(response.data.meals[0]);
+  main: async function(mealsFileName) {
+    let meals = general.readFileIntoArray(mealsFileName);
+    let ingredients = {};
+    for (let meal of meals) {
+      let mealData = await groceries.getMealData(meal);
+      ingredients = general.concatObjectMerge(ingredients, mealData.ingredients);
+    }
+    return ingredients;
   }
-};</code></pre>
+}</code></pre>
         </article>
     </section>
 

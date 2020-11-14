@@ -31,7 +31,7 @@ describe("General", async function() {
     const C = general.concatObjectMerge(A, B);
     expect(Object.keys(C).length).to.eq(3);
     expect(C["Key1"]).to.eq("Value1");
-    expect(C["Key2"]).to.eq("Value2ValueTwo");
+    expect(C["Key2"]).to.eq("Value2, ValueTwo");
     expect(C["Key3"]).to.eq("Value3");
   });
 });
@@ -57,7 +57,7 @@ describe("Meal", async function() {
   it("Test Meal Class", async function() {
     const lasagnaBuffer = fs.readFileSync("test/artifacts/lasagna.json");
     const lasagna = JSON.parse(lasagnaBuffer);
-    const lasagnaMeal = new meal(lasagna.meals[1]);
+    const lasagnaMeal = new meal(lasagna.meals[0]);
     expect(lasagnaMeal.name).to.eq("Lasagna Sandwiches")
     expect(lasagnaMeal.id).to.eq("52987")
     expect(lasagnaMeal.region).to.eq("American")
@@ -72,7 +72,7 @@ describe("Meal", async function() {
   it("Test Get Ingredients function", async function() {
     const lasagnaBuffer = fs.readFileSync("test/artifacts/lasagna.json");
     const lasagna = JSON.parse(lasagnaBuffer);
-    const lasagnaMeal = new meal(lasagna.meals[1]);
+    const lasagnaMeal = new meal(lasagna.meals[0]);
     expect(lasagnaMeal.ingredients["Chopped Onion"]).to.eq("2 tbs");
     expect(lasagnaMeal.ingredients["Bacon"]).to.eq("8 slices");
     expect(lasagnaMeal.ingredients["Butter"]).to.eq("2 1/2 Tbs");

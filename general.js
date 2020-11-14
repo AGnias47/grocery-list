@@ -32,7 +32,7 @@ module.exports = {
     for (const property in new_object) {
       const properKey = TC.titleCase(property);
       if (properKey in existing_object) {
-        existing_object[properKey] += new_object[property];
+        existing_object[properKey] += ", " + new_object[property];
       } else {
         existing_object[properKey] = new_object[property];
       }

@@ -1,8 +1,9 @@
 /**
- * Module for working with TheRecipeDB
+ * Module for working with TheMealDB
  *
  * @module groceries
  */
+
 'use strict';
 
 const axios = require("axios");

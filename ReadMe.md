@@ -10,24 +10,23 @@ development phase.
 ## Top-Level Functionality
 
 * Input: List of meals separated by lines in a file named `meals.txt`
-* Output: List of ingredients needed for all meals listed in `meals.txt`
+* Output: List of ingredients with quantities needed for all meals listed in `meals.txt`
 
 ### Script execution
 
 ```bash
 npm install
-node index.js
+npm start
 ```
+
+## [Code Coverage](https://www.andygnias.com/grocery-list/nyc-lcov-coverage/lcov-report/index.html)
+
+Tests run using the [Mocha](https://mochajs.org/) framework. Coverage is calculated using [Istanbul](https://istanbul.js.org/)'s
+[nyc](https://www.npmjs.com/package/nyc) tool. Coverage can be found [here](https://www.andygnias.com/grocery-list/nyc-lcov-coverage/lcov-report/index.html).
 
 ## Implementation Improvements
 
-* Return ingredient quantities
 * Return ingredients as grouped by type, ex. fruits grouped with fruits
 * Create a frontend
 * Handle cases where a meal is not found
 * Convert ingredients to ingredient-quantity mapping
-
-### Functionality
-
-* Provide some basic info, get random meals, recipes, and a grocery list
-

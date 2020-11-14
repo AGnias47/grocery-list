@@ -1,11 +1,17 @@
-'use strict';
-/** Meal class. Wraps data more cleanly for meals obtained from TheRecipeDB API. */
+/**
+ * Meal class. Wraps meal data from TheMealDB API
+ *
+ * @module meal
+ */
 
+'use strict';
+
+/** Meal class. Wraps data more cleanly for meals obtained from TheMealDB API. */
 class Meal {
   /**
-   * Wraps data more cleanly for meals obtained from TheRecipeDB API
+   * Wraps data more cleanly for meals obtained from TheMealDB API
    *
-   * @param mealData {Object} Raw meal data from TheRecipeDB
+   * @param mealData {Object} Raw meal data from TheMealDB
    */
   constructor(mealData) {
     this.name = mealData.strMeal;
@@ -23,7 +29,7 @@ class Meal {
 /**
  * Parse individual ingredients from a meal with the amount needed
  *
- * @param mealData {Object} Raw meal data from TheRecipeDB
+ * @param mealData {Object} Raw meal data from TheMealDB
  * @returns {Object} Object where Key: ingredient, Value: amount
  */
 function getIngredients(mealData) {
@@ -34,7 +40,7 @@ function getIngredients(mealData) {
       if (ingredient !== null && typeof ingredient !== "undefined" && ingredient !== "") {
         const amountKey = property.replace("strIngredient", "strMeasure");
         if (ingredient in ingredients) {
-          ingredients[ingredient] += mealData[amountKey];
+          ingredients[ingredient] += ", " + mealData[amountKey];
         } else {
           ingredients[ingredient] = mealData[amountKey];
         }
