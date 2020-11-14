@@ -12,36 +12,36 @@ class Meal {
     this.id = mealData.idMeal;
     this.region = mealData.strArea;
     this.category = mealData.strCategory;
-    this.ingredients = this.getIngredients(mealData);
+    this.ingredients = getIngredients(mealData);
     this.imageUrl = mealData.strMealThumb;
     this.tags = mealData.strTags;
     this.instructions = mealData.strInstructions;
     this.video = mealData.strYoutube;
   }
-  /**
-   * Parse individual ingredients from a meal
-   *
-   * @param mealData {Object} Raw meal data from TheRecipeDB
-   * @returns {array} List of ingredients used in meal
-   */
+}
 
-
-  getIngredients(mealData) {
-    let ingredients = [];
-
-    for (const property in mealData) {
-      if (property.includes("strIngredient")) {
-        const ingredient = mealData[property];
-
-        if (ingredient !== null && typeof ingredient !== "undefined" && ingredient !== "") {
-          ingredients.push(ingredient);
+/**
+ * Parse individual ingredients from a meal with the amount needed
+ *
+ * @param mealData {Object} Raw meal data from TheRecipeDB
+ * @returns {Object} Object where Key: ingredient, Value: amount
+ */
+function getIngredients(mealData) {
+  let ingredients = {};
+  for (const property in mealData) {
+    if (property.includes("strIngredient")) {
+      const ingredient = mealData[property];
+      if (ingredient !== null && typeof ingredient !== "undefined" && ingredient !== "") {
+        const amountKey = property.replace("strIngredient", "strMeasure");
+        if (ingredient in ingredients) {
+          ingredients[ingredient] += mealData[amountKey];
+        } else {
+          ingredients[ingredient] = mealData[amountKey];
         }
       }
     }
-
-    return ingredients;
   }
-
+  return ingredients;
 }
 
 module.exports = Meal;

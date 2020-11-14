@@ -9,7 +9,7 @@
     "test": "nyc --reporter=lcov --report-dir=docs/nyc-lcov-coverage --reporter=text mocha",
     "start": "node index.js",
     "softclean": "git clean -dxf -e node_modules/ -e .idea/",
-    "e2e": "npm install && npm run format && npm run doc && npm run test && npm start && npm run softclean"
+    "e2e": "npm install && npm run format && npm run doc && npm run test && npm start"
   },
   "author": "Andy Gnias",
   "license": "MIT",
