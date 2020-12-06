@@ -81,7 +81,7 @@ describe("Meal", async function() {
 
 describe("Index - E2E", async function() {
   it("E2E Test", async function() {
-    const groceryList = await mainFunc.main("test/artifacts/meals.txt");
+    const groceryList = await mainFunc.main("test/artifacts/meals.txt")[0];
     console.log(groceryList);
   });
 });

@@ -6,6 +6,7 @@
 
 const groceries = require("./groceries.js");
 const general = require("./general.js");
+const meal = require("./meal.js")
 
 'use strict';
 
@@ -17,12 +18,18 @@ module.exports = {
    * @returns {Promise<{Object}>} Object where Key: Ingredient, Value: Quantity
    */
   main: async function(mealsFileName) {
-    let meals = general.readFileIntoArray(mealsFileName);
+    let meals_from_list = general.readFileIntoArray(mealsFileName);
     let ingredients = {};
-    for (let meal of meals) {
-      let mealData = await groceries.getMealData(meal);
-      ingredients = general.concatObjectMerge(ingredients, mealData.ingredients);
+    let missed_meals = [];
+    for (let meal_from_list of meals_from_list) {
+      let mealData = await groceries.getMealData(meal_from_list);
+      if (mealData instanceof meal) {
+        ingredients = general.concatObjectMerge(ingredients, mealData.ingredients);
+      }
+      else {
+        missed_meals.push(meal_from_list);
+      }
     }
-    return ingredients;
+    return [ingredients, missed_meals];
   }
 }
