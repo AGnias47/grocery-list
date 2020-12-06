@@ -51,6 +51,12 @@ describe("Groceries", async function() {
     let randomMeal = await groceries.getRandomMeal();
     expect(randomMeal.name).to.be.a("string");
   });
+
+  it("Get meal without recipe", async function() {
+    const missingMeal = "Shoo Fly Pie"
+    let emptymeal = await groceries.getMealData(missingMeal);
+    expect(emptymeal).to.be.empty;
+  })
 });
 
 describe("Meal", async function() {
@@ -81,7 +87,20 @@ describe("Meal", async function() {
 
 describe("Index - E2E", async function() {
   it("E2E Test", async function() {
-    const groceryList = await mainFunc.main("test/artifacts/meals.txt")[0];
-    console.log(groceryList);
+    const groceryList = await mainFunc.main("test/artifacts/meals.txt");
+    const ingredients = groceryList[0];
+    const missingIngredients = groceryList[1];
+    console.log(ingredients);
+    expect(ingredients).to.have.property("Flour");
+    expect(missingIngredients).to.be.empty;
+  });
+
+  it("E2E Test - Ingredients missing", async function() {
+    const groceryList = await mainFunc.main("test/artifacts/meals_with_missing_items.txt");
+    const ingredients = groceryList[0];
+    const missingIngredients = groceryList[1];
+    console.log(ingredients);
+    expect(ingredients).to.have.property("Flour");
+    expect(missingIngredients).to.include("An actual book");
   });
 });
