@@ -25,6 +25,9 @@ module.exports = {
    */
   getMealData: async function(meal) {
     const response = await axios.get(config.api_base_url + "search.php?s=" + meal);
+    if (response.data.meals === null) {
+      return {};
+    }
     return new Meal(response.data.meals[0]);
   },
 
