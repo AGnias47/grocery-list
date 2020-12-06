@@ -28,5 +28,4 @@ Tests run using the [Mocha](https://mochajs.org/) framework. Coverage is calcula
 
 * Return ingredients as grouped by type, ex. fruits grouped with fruits
 * Create a frontend
-* Handle cases where a meal is not found
 * Convert ingredients to ingredient-quantity mapping

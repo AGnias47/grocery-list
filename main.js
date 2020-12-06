@@ -25,8 +25,7 @@ module.exports = {
       let mealData = await groceries.getMealData(meal_from_list);
       if (mealData instanceof meal) {
         ingredients = general.concatObjectMerge(ingredients, mealData.ingredients);
-      }
-      else {
+      } else {
         missed_meals.push(meal_from_list);
       }
     }
